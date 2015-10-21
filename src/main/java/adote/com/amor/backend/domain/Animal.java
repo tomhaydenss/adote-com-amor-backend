@@ -31,18 +31,19 @@ public class Animal implements Serializable {
 
 	private String nome;
 
-	@ManyToOne
-	private Raca raca;
-
 	private String sexo;
 
 	//bi-directional many-to-one association to Proprietario
 	@ManyToOne
 	private Proprietario proprietario;
 
+	//uni-directional many-to-one association to Raca
+	@ManyToOne
+	private Raca raca;
+
 	//bi-directional many-to-one association to FotoAnimal
 	@OneToMany(mappedBy="animal")
-	private List<FotoAnimal> fotoAnimals;
+	private List<FotoAnimal> fotosAnimal;
 
 	public Animal() {
 	}
@@ -87,14 +88,6 @@ public class Animal implements Serializable {
 		this.nome = nome;
 	}
 
-	public Raca getRaca() {
-		return raca;
-	}
-
-	public void setRaca(Raca raca) {
-		this.raca = raca;
-	}
-
 	public String getSexo() {
 		return this.sexo;
 	}
@@ -111,26 +104,34 @@ public class Animal implements Serializable {
 		this.proprietario = proprietario;
 	}
 
-	public List<FotoAnimal> getFotoAnimals() {
-		return this.fotoAnimals;
+	public Raca getRaca() {
+		return this.raca;
 	}
 
-	public void setFotoAnimals(List<FotoAnimal> fotoAnimals) {
-		this.fotoAnimals = fotoAnimals;
+	public void setRaca(Raca raca) {
+		this.raca = raca;
 	}
 
-	public FotoAnimal addFotoAnimal(FotoAnimal fotoAnimal) {
-		getFotoAnimals().add(fotoAnimal);
-		fotoAnimal.setAnimal(this);
-
-		return fotoAnimal;
+	public List<FotoAnimal> getFotosAnimal() {
+		return this.fotosAnimal;
 	}
 
-	public FotoAnimal removeFotoAnimal(FotoAnimal fotoAnimal) {
-		getFotoAnimals().remove(fotoAnimal);
-		fotoAnimal.setAnimal(null);
+	public void setFotosAnimal(List<FotoAnimal> fotosAnimal) {
+		this.fotosAnimal = fotosAnimal;
+	}
 
-		return fotoAnimal;
+	public FotoAnimal addFotosAnimal(FotoAnimal fotosAnimal) {
+		getFotosAnimal().add(fotosAnimal);
+		fotosAnimal.setAnimal(this);
+
+		return fotosAnimal;
+	}
+
+	public FotoAnimal removeFotosAnimal(FotoAnimal fotosAnimal) {
+		getFotosAnimal().remove(fotosAnimal);
+		fotosAnimal.setAnimal(null);
+
+		return fotosAnimal;
 	}
 
 }

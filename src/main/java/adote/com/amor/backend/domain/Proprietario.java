@@ -26,9 +26,9 @@ public class Proprietario implements Serializable {
 
 	//bi-directional many-to-one association to Animal
 	@OneToMany(mappedBy="proprietario")
-	private List<Animal> animals;
+	private List<Animal> animais;
 
-	//bi-directional many-to-one association to Localizacao
+	//uni-directional many-to-one association to Localizacao
 	@ManyToOne
 	private Localizacao localizacao;
 
@@ -67,26 +67,26 @@ public class Proprietario implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public List<Animal> getAnimals() {
-		return this.animals;
+	public List<Animal> getAnimais() {
+		return this.animais;
 	}
 
-	public void setAnimals(List<Animal> animals) {
-		this.animals = animals;
+	public void setAnimais(List<Animal> animais) {
+		this.animais = animais;
 	}
 
-	public Animal addAnimal(Animal animal) {
-		getAnimals().add(animal);
-		animal.setProprietario(this);
+	public Animal addAnimai(Animal animai) {
+		getAnimais().add(animai);
+		animai.setProprietario(this);
 
-		return animal;
+		return animai;
 	}
 
-	public Animal removeAnimal(Animal animal) {
-		getAnimals().remove(animal);
-		animal.setProprietario(null);
+	public Animal removeAnimai(Animal animai) {
+		getAnimais().remove(animai);
+		animai.setProprietario(null);
 
-		return animal;
+		return animai;
 	}
 
 	public Localizacao getLocalizacao() {

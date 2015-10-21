@@ -15,36 +15,35 @@ public class Raca implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="raca_id")
-	private int racaId;
+	private int id;
 
-	private String descricao;
+	private String nome;
 
-	//bi-directional many-to-one association to Especie
+	//uni-directional many-to-one association to Especie
 	@ManyToOne
 	private Especie especie;
 
-	//bi-directional many-to-one association to Porte
+	//uni-directional many-to-one association to Porte
 	@ManyToOne
 	private Porte porte;
 
 	public Raca() {
 	}
 
-	public int getRacaId() {
-		return this.racaId;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setRacaId(int racaId) {
-		this.racaId = racaId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getDescricao() {
-		return this.descricao;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Especie getEspecie() {

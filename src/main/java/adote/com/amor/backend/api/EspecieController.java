@@ -40,7 +40,7 @@ public class EspecieController {
 	@RequestMapping(value = "/especies", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public Especie create(@RequestBody EspecieRequest request) {
 
-		Especie entity = new Especie(request.getDescricao());
+		Especie entity = new Especie(request.getNome());
 		return repository.save(entity);
 
 	}
@@ -48,7 +48,7 @@ public class EspecieController {
 	@RequestMapping(value = "/especies/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
 	public Especie update(@PathVariable Integer id, @RequestBody EspecieRequest request) {
 
-		Especie entity = new Especie(id, request.getDescricao());
+		Especie entity = new Especie(id, request.getNome());
 		return repository.save(entity);
 
 	}
