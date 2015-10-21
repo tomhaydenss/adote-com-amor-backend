@@ -4,6 +4,14 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
 	<persistence-unit name="adote-com-amor-pu">
+	
+		<class>adote.com.amor.backend.domain.Animal</class>
+		<class>adote.com.amor.backend.domain.Especie</class>
+		<class>adote.com.amor.backend.domain.FotoAnimal</class>
+		<class>adote.com.amor.backend.domain.Localizacao</class>
+		<class>adote.com.amor.backend.domain.Porte</class>
+		<class>adote.com.amor.backend.domain.Proprietario</class>
+		<class>adote.com.amor.backend.domain.Raca</class>
 
 		<properties>
 
