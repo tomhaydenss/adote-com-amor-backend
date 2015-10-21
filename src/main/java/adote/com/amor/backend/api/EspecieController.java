@@ -22,14 +22,14 @@ public class EspecieController {
 	@Autowired
 	private EspecieRepository repository;
 
-	@RequestMapping(value = "/saleschannels", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/especies", method = RequestMethod.GET, produces = "application/json")
 	public List<Especie> findAll() {
 
 		return (List<Especie>) repository.findAll();
 
 	}
 
-	@RequestMapping(value = "/saleschannels/{id}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/especies/{id}", method = RequestMethod.GET, produces = "application/json")
 	public Especie findOne(@PathVariable Integer id) {
 
 		Especie result = repository.findOne(id);
@@ -37,7 +37,7 @@ public class EspecieController {
 
 	}
 
-	@RequestMapping(value = "/saleschannels", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/especies", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public Especie create(@RequestBody EspecieRequest request) {
 
 		Especie entity = new Especie(request.getDescricao());
@@ -45,7 +45,7 @@ public class EspecieController {
 
 	}
 
-	@RequestMapping(value = "/saleschannels/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/especies/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
 	public Especie update(@PathVariable Integer id, @RequestBody EspecieRequest request) {
 
 		Especie entity = new Especie(id, request.getDescricao());
@@ -53,7 +53,7 @@ public class EspecieController {
 
 	}
 
-	@RequestMapping(value = "/saleschannels/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/especies/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
 
 		repository.delete(id);
