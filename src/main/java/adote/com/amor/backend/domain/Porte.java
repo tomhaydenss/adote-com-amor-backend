@@ -3,14 +3,13 @@ package adote.com.amor.backend.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the porte database table.
  * 
  */
 @Entity
-@Table(name="porte")
-@NamedQuery(name="Porte.findAll", query="SELECT p FROM Porte p")
+@Table(name = "porte")
+@NamedQuery(name = "Porte.findAll", query = "SELECT p FROM Porte p")
 public class Porte implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +21,19 @@ public class Porte implements Serializable {
 	private String nome;
 
 	public Porte() {
+	}
+
+	public Porte(String descricao, String nome) {
+		super();
+		this.descricao = descricao;
+		this.nome = nome;
+	}
+
+	public Porte(int id, String descricao, String nome) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.nome = nome;
 	}
 
 	public int getId() {
