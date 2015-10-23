@@ -1,24 +1,24 @@
 # adote-com-amor-backend
-PRE-REQUISITOS:
+INSTALAÇÃO:
 1. BANCO DE DADOS MYSQL
 2. GRADLE
 3. IMPORTAR DUMP: db/Dump20151023.sql
-
+4. RODAR PROJETO COM: gradle clean build bootRun
 
 CADASTRAR LOCALIZACAO
 REQUEST:
 curl -X POST -H "Content-Type: application/json" http://localhost:8080/localizacoes -d '{"cep": "69044000", "endereco": "Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM", "pontoReferencia": "Perto da Toca do Urso", "latitude": -3.0668977, "longitude": -60.0617911}'
 
 RESPONSE:
-{"id":2,"cep":"69044000","endereco":"Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM","pontoReferencia":"Perto da Toca do Urso","latitude":-3.0668976,"longitude":-60.06179}
+{"id":"8a459df6-6128-494b-8c53-8313d91c2209","cep":"69044000","endereco":"Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM","pontoReferencia":"Perto da Toca do Urso","latitude":-3.0668976,"longitude":-60.06179}
 
 
 CADASTRAR PROPRIETARIO
 REQUEST:
-curl -X POST -H "Content-Type: application/json" http://localhost:8080/proprietarios -d '{"nome": "Alessandro S Silva", "email": "motaro.am@gmail.com", "telefone": "+5592981362466", "idLocalizacao": 2}'
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/proprietarios -d '{"nome": "Alessandro S Silva", "email": "motaro.am@gmail.com", "telefone": "+5592981362466", "idLocalizacao": "8a459df6-6128-494b-8c53-8313d91c2209"}'
 
 RESPONSE:
-{"id":2,"nome":"motaro.am@gmail.com","email":"Alessandro S Silva","telefone":"+5592981362466","localizacao":{"id":2,"cep":"69044000","endereco":"Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM","pontoReferencia":"Perto da Toca do Urso","latitude":-3.0669,"longitude":-60.0618}}
+{"id":"11e0a713-6eb3-4893-8f7a-a147d4c409e4","nome":"motaro.am@gmail.com","email":"Alessandro S Silva","telefone":"+5592981362466","localizacao":{"id":"8a459df6-6128-494b-8c53-8313d91c2209","cep":"69044000","endereco":"Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM","pontoReferencia":"Perto da Toca do Urso","latitude":-3.0669,"longitude":-60.0618}}
 
 
 PESQUISAR RACAS DE ANIMAIS
@@ -31,6 +31,7 @@ RESPONSE
 
 CADASTRAR ANIMAL
 REQUEST:
-curl -X POST -H "Content-Type: application/json" http://localhost:8080/animais -d '{"nome": "Maximilius", "sexo": "M", "descricao": "Cão muito carinhoso e fiel. Gosta muito de brincar de empurrar.", "dataNascimento": "01/01/2008", "idRaca": 62, "idProprietario": 2}'
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/animais -d '{"nome": "Maximilius", "sexo": "M", "descricao": "Cão muito carinhoso e fiel. Gosta muito de brincar de empurrar.", "dataNascimento": "01/01/2008", "idRaca": 62, "idProprietario": "11e0a713-6eb3-4893-8f7a-a147d4c409e4"}'
 
 RESPONSE:
+{"id":"e8c682d2-004a-4e50-9462-1fe64062f7f2","nome":"Maximilius","sexo":"M","descricao":"Cão muito carinhoso e fiel. Gosta muito de brincar de empurrar.","dataNascimento":"01/01/2008","dataCadastro":"23/10/2015 02:35:12","raca":{"id":62,"nome":"Doberman","especie":{"id":1,"nome":"Canina"},"porte":{"id":4,"nome":"Grande","descricao":"De 50 a 69cm de 25 a 45kg"}},"proprietario":{"id":"11e0a713-6eb3-4893-8f7a-a147d4c409e4","nome":"motaro.am@gmail.com","email":"Alessandro S Silva","telefone":"+5592981362466","localizacao":{"id":"8a459df6-6128-494b-8c53-8313d91c2209","cep":"69044000","endereco":"Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM","pontoReferencia":"Perto da Toca do Urso","latitude":-3.0669,"longitude":-60.0618}}}
