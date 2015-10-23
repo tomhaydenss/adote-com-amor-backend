@@ -1,9 +1,10 @@
 package adote.com.amor.backend.api;
 
+import static adote.com.amor.backend.api.util.Conversor.toPorteResponse;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import adote.com.amor.backend.api.request.PorteRequest;
+import adote.com.amor.backend.api.response.PorteResponse;
 import adote.com.amor.backend.domain.Porte;
 import adote.com.amor.backend.repository.PorteRepository;
 
@@ -22,33 +24,38 @@ public class PorteController {
 	private PorteRepository repository;
 
 	@RequestMapping(value = "/portes", method = RequestMethod.GET, produces = "application/json")
-	public List<Porte> findAll() {
+	public List<PorteResponse> findAll() {
 
-		return (List<Porte>) repository.findAll();
-
-	}
-
-	@RequestMapping(value = "/portes/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Porte findOne(@PathVariable Integer id) {
-
-		Porte result = repository.findOne(id);
+		List<Porte> list = (List<Porte>) repository.findAll();
+		List<PorteResponse> result = new ArrayList<PorteResponse>();
+		for (Porte item : list) {
+			result.add(toPorteResponse(item));
+		}
 		return result;
 
 	}
 
+	@RequestMapping(value = "/portes/{id}", method = RequestMethod.GET, produces = "application/json")
+	public PorteResponse findOne(@PathVariable Integer id) {
+
+		Porte result = repository.findOne(id);
+		return toPorteResponse(result);
+
+	}
+
 	@RequestMapping(value = "/portes", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Porte create(@RequestBody PorteRequest request) {
+	public PorteResponse create(@RequestBody PorteRequest request) {
 
 		Porte entity = new Porte(request.getNome(), request.getDescricao());
-		return repository.save(entity);
+		return toPorteResponse(repository.save(entity));
 
 	}
 
 	@RequestMapping(value = "/portes/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-	public Porte update(@PathVariable Integer id, @RequestBody PorteRequest request) {
+	public PorteResponse update(@PathVariable Integer id, @RequestBody PorteRequest request) {
 
 		Porte entity = new Porte(id, request.getNome(), request.getDescricao());
-		return repository.save(entity);
+		return toPorteResponse(repository.save(entity));
 
 	}
 

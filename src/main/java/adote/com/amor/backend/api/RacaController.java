@@ -26,8 +26,8 @@ public class RacaController {
 
 		List<Raca> list = (List<Raca>) repository.findAll();
 		List<RacaResponse> result = new ArrayList<RacaResponse>();
-		for (Raca raca : list) {
-			result.add(toRacaResponse(raca));
+		for (Raca item : list) {
+			result.add(toRacaResponse(item));
 		}
 		return result;
 

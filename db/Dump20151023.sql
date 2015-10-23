@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `animal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `animal` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `sexo` char(1) DEFAULT NULL,
   `descricao` text,
   `data_nascimento` datetime DEFAULT NULL,
-  `data_cadastro` varchar(45) DEFAULT NULL,
+  `data_cadastro` datetime DEFAULT NULL,
   `raca_id` int(11) NOT NULL,
   `proprietario_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -38,7 +38,7 @@ CREATE TABLE `animal` (
   KEY `fk_animal_2_idx` (`raca_id`),
   CONSTRAINT `fk_animal_1` FOREIGN KEY (`proprietario_id`) REFERENCES `proprietario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_animal_2` FOREIGN KEY (`raca_id`) REFERENCES `raca` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `animal` (
 
 LOCK TABLES `animal` WRITE;
 /*!40000 ALTER TABLE `animal` DISABLE KEYS */;
-INSERT INTO `animal` VALUES (0,'TOY','M','Cão idoso e muito fiel.','2000-10-01 00:00:00','2015/10/21',51,1);
+INSERT INTO `animal` VALUES (1,'TOY','M','Cão idoso e muito fiel.','2000-10-01 00:00:00','2015-10-21 00:00:00',51,1),(3,'Maximilius','M','Cão muito carinhoso e fiel. Gosta muito de brincar de empurrar.','2008-01-01 00:00:00','2015-10-23 02:00:06',62,2);
 /*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,9 +114,9 @@ CREATE TABLE `localizacao` (
   `endereco` varchar(255) DEFAULT NULL,
   `ponto_referencia` varchar(45) DEFAULT NULL,
   `latitude` float DEFAULT NULL,
-  `longitude` varchar(45) DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `localizacao` (
 
 LOCK TABLES `localizacao` WRITE;
 /*!40000 ALTER TABLE `localizacao` DISABLE KEYS */;
-INSERT INTO `localizacao` VALUES (1,'20771580','Rua Degas, 400 - Del Castilho, Rio de Janeiro - RJ','Atrás do NorteShopping',-22.8842,'-43.2832304');
+INSERT INTO `localizacao` VALUES (1,'20771580','Rua Degas, 400 - Del Castilho, Rio de Janeiro - RJ','Atrás do NorteShopping',-22.8842,-43.2832),(2,'69044000','Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM','Perto da Toca do Urso',-3.0669,-60.0618),(3,'69044000','Av. Des. João Machado, Qd-B, C-5, Cj. Flamanal - Planalto, Manaus - AM','Perto da Toca do Urso',-3.0669,-60.0618);
 /*!40000 ALTER TABLE `localizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `proprietario` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_proprietario_1_idx` (`localizacao_id`),
   CONSTRAINT `fk_proprietario_1` FOREIGN KEY (`localizacao_id`) REFERENCES `localizacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `proprietario` (
 
 LOCK TABLES `proprietario` WRITE;
 /*!40000 ALTER TABLE `proprietario` DISABLE KEYS */;
-INSERT INTO `proprietario` VALUES (1,'Tom Hayden','tomhaydenss@gmail.com','21983044044',1);
+INSERT INTO `proprietario` VALUES (1,'Tom Hayden','tomhaydenss@gmail.com','21983044044',1),(2,'motaro.am@gmail.com','Alessandro S Silva','+5592981362466',2);
 /*!40000 ALTER TABLE `proprietario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-21  8:08:51
+-- Dump completed on 2015-10-23  2:01:41

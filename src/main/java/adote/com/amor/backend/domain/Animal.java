@@ -5,83 +5,82 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the animal database table.
  * 
  */
 @Entity
-@Table(name="animal")
-@NamedQuery(name="Animal.findAll", query="SELECT a FROM Animal a")
+@Table(name = "animal")
+@NamedQuery(name = "Animal.findAll", query = "SELECT a FROM Animal a")
 public class Animal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Column(name="data_cadastro")
-	private String dataCadastro;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="data_nascimento")
-	private Date dataNascimento;
-
-	@Lob
-	private String descricao;
-
 	private String nome;
 
 	private String sexo;
 
-	//bi-directional many-to-one association to Proprietario
-	@ManyToOne
-	private Proprietario proprietario;
+	@Lob
+	private String descricao;
 
-	//uni-directional many-to-one association to Raca
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_nascimento")
+	private Date dataNascimento;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro = new Date();
+
+	// uni-directional many-to-one association to Raca
 	@ManyToOne
 	private Raca raca;
 
-	//bi-directional many-to-one association to FotoAnimal
-	@OneToMany(mappedBy="animal")
+	// bi-directional many-to-one association to Proprietario
+	@ManyToOne
+	private Proprietario proprietario;
+
+	// bi-directional many-to-one association to FotoAnimal
+	@OneToMany(mappedBy = "animal")
 	private List<FotoAnimal> fotosAnimal;
 
 	public Animal() {
 	}
 
+	public Animal(int id, String nome, String sexo, String descricao, Date dataNascimento, Raca raca,
+			Proprietario proprietario) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.sexo = sexo;
+		this.descricao = descricao;
+		this.dataNascimento = dataNascimento;
+		this.raca = raca;
+		this.proprietario = proprietario;
+	}
+
+	public Animal(String nome, String sexo, String descricao, Date dataNascimento, Raca raca,
+			Proprietario proprietario) {
+		super();
+		this.nome = nome;
+		this.sexo = sexo;
+		this.descricao = descricao;
+		this.dataNascimento = dataNascimento;
+		this.raca = raca;
+		this.proprietario = proprietario;
+	}
+
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getDataCadastro() {
-		return this.dataCadastro;
-	}
-
-	public void setDataCadastro(String dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public Date getDataNascimento() {
-		return this.dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getDescricao() {
-		return this.descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
@@ -89,27 +88,51 @@ public class Animal implements Serializable {
 	}
 
 	public String getSexo() {
-		return this.sexo;
+		return sexo;
 	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public Proprietario getProprietario() {
-		return this.proprietario;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public Raca getRaca() {
-		return this.raca;
+		return raca;
 	}
 
 	public void setRaca(Raca raca) {
 		this.raca = raca;
+	}
+
+	public Proprietario getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
 	}
 
 	public List<FotoAnimal> getFotosAnimal() {

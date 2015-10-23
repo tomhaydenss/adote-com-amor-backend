@@ -13,6 +13,7 @@ public class RacaResponse {
 		this.nome = nome;
 		this.especie = especie;
 		this.porte = porte;
+
 	}
 
 	public Integer getId() {

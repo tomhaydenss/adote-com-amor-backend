@@ -4,14 +4,13 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the proprietario database table.
  * 
  */
 @Entity
-@Table(name="proprietario")
-@NamedQuery(name="Proprietario.findAll", query="SELECT p FROM Proprietario p")
+@Table(name = "proprietario")
+@NamedQuery(name = "Proprietario.findAll", query = "SELECT p FROM Proprietario p")
 public class Proprietario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,15 +23,37 @@ public class Proprietario implements Serializable {
 
 	private String telefone;
 
-	//bi-directional many-to-one association to Animal
-	@OneToMany(mappedBy="proprietario")
-	private List<Animal> animais;
+	// bi-directional many-to-one association to Animal
+//	@OneToMany(mappedBy = "proprietario")
+//	private List<Animal> animais;
 
-	//uni-directional many-to-one association to Localizacao
+	// uni-directional many-to-one association to Localizacao
 	@ManyToOne
 	private Localizacao localizacao;
 
 	public Proprietario() {
+	}
+	
+	public Proprietario(int id) {
+		super();
+		this.id = id;
+	}
+
+	public Proprietario(int id, String email, String nome, String telefone, Localizacao localizacao) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.localizacao = localizacao;
+	}
+
+	public Proprietario(String email, String nome, String telefone, Localizacao localizacao) {
+		super();
+		this.email = email;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.localizacao = localizacao;
 	}
 
 	public int getId() {
@@ -67,27 +88,27 @@ public class Proprietario implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public List<Animal> getAnimais() {
-		return this.animais;
-	}
-
-	public void setAnimais(List<Animal> animais) {
-		this.animais = animais;
-	}
-
-	public Animal addAnimai(Animal animai) {
-		getAnimais().add(animai);
-		animai.setProprietario(this);
-
-		return animai;
-	}
-
-	public Animal removeAnimai(Animal animai) {
-		getAnimais().remove(animai);
-		animai.setProprietario(null);
-
-		return animai;
-	}
+//	public List<Animal> getAnimais() {
+//		return this.animais;
+//	}
+//
+//	public void setAnimais(List<Animal> animais) {
+//		this.animais = animais;
+//	}
+//
+//	public Animal addAnimais(Animal animais) {
+//		getAnimais().add(animais);
+//		animais.setProprietario(this);
+//
+//		return animais;
+//	}
+//
+//	public Animal removeAnimais(Animal animais) {
+//		getAnimais().remove(animais);
+//		animais.setProprietario(null);
+//
+//		return animais;
+//	}
 
 	public Localizacao getLocalizacao() {
 		return this.localizacao;
