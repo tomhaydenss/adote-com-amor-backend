@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +36,7 @@ public class LocalizacaoController {
 	}
 
 	@RequestMapping(value = "/localizacoes/{id}", method = RequestMethod.GET, produces = "application/json")
-	public LocalizacaoResponse findOne(@PathVariable Integer id) {
+	public LocalizacaoResponse findOne(@PathVariable String id) {
 
 		Localizacao result = repository.findOne(id);
 		return toLocalizacaoResponse(result);
@@ -53,7 +52,7 @@ public class LocalizacaoController {
 	}
 
 	@RequestMapping(value = "/localizacoes/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-	public LocalizacaoResponse update(@PathVariable Integer id, @RequestBody LocalizacaoRequest request) {
+	public LocalizacaoResponse update(@PathVariable String id, @RequestBody LocalizacaoRequest request) {
 
 		Localizacao entity = new Localizacao(id, request.getCep(), request.getEndereco(), request.getPontoReferencia(), request.getLatitude(), request.getLongitude());
 		return toLocalizacaoResponse(repository.save(entity));
@@ -61,7 +60,7 @@ public class LocalizacaoController {
 	}
 
 	@RequestMapping(value = "/localizacoes/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 
 		repository.delete(id);
 

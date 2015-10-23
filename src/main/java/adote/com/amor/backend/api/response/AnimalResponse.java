@@ -1,10 +1,8 @@
 package adote.com.amor.backend.api.response;
 
-import java.util.Date;
-
 public class AnimalResponse {
 
-	private Integer id;
+	private String id;
 	private String nome;
 	private String sexo;
 	private String descricao;
@@ -13,7 +11,7 @@ public class AnimalResponse {
 	private RacaResponse raca;
 	private ProprietarioResponse proprietario;
 
-	public AnimalResponse(Integer id, String nome, String sexo, String descricao, String dataNascimento,
+	public AnimalResponse(String id, String nome, String sexo, String descricao, String dataNascimento,
 			String dataCadastro, RacaResponse raca, ProprietarioResponse proprietario) {
 		super();
 		this.id = id;
@@ -26,7 +24,7 @@ public class AnimalResponse {
 		this.proprietario = proprietario;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 

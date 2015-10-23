@@ -2,14 +2,14 @@ package adote.com.amor.backend.api.response;
 
 public class LocalizacaoResponse {
 
-	private Integer id;
+	private String id;
 	private String cep;
 	private String endereco;
 	private String pontoReferencia;
 	private Float latitude;
 	private Float longitude;
 
-	public LocalizacaoResponse(Integer id, String cep, String endereco, String pontoReferencia, Float latitude,
+	public LocalizacaoResponse(String id, String cep, String endereco, String pontoReferencia, Float latitude,
 			Float longitude) {
 		super();
 		this.id = id;
@@ -20,7 +20,7 @@ public class LocalizacaoResponse {
 		this.longitude = longitude;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 

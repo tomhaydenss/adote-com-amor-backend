@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * The persistent class for the animal database table.
@@ -16,7 +17,7 @@ public class Animal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id;
+	private String id = UUID.randomUUID().toString();
 
 	private String nome;
 
@@ -48,7 +49,7 @@ public class Animal implements Serializable {
 	public Animal() {
 	}
 
-	public Animal(int id, String nome, String sexo, String descricao, Date dataNascimento, Raca raca,
+	public Animal(String id, String nome, String sexo, String descricao, Date dataNascimento, Raca raca,
 			Proprietario proprietario) {
 		super();
 		this.id = id;
@@ -71,11 +72,11 @@ public class Animal implements Serializable {
 		this.proprietario = proprietario;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

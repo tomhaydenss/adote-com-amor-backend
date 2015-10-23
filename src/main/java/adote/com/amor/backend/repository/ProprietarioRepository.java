@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import adote.com.amor.backend.domain.Proprietario;
 
-public interface ProprietarioRepository extends CrudRepository<Proprietario, Integer> {
+public interface ProprietarioRepository extends CrudRepository<Proprietario, String> {
 
 }

@@ -3,6 +3,7 @@ package adote.com.amor.backend.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * The persistent class for the proprietario database table.
@@ -15,7 +16,7 @@ public class Proprietario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id;
+	private String id = UUID.randomUUID().toString();
 
 	private String email;
 
@@ -24,8 +25,8 @@ public class Proprietario implements Serializable {
 	private String telefone;
 
 	// bi-directional many-to-one association to Animal
-//	@OneToMany(mappedBy = "proprietario")
-//	private List<Animal> animais;
+	// @OneToMany(mappedBy = "proprietario")
+	// private List<Animal> animais;
 
 	// uni-directional many-to-one association to Localizacao
 	@ManyToOne
@@ -33,13 +34,13 @@ public class Proprietario implements Serializable {
 
 	public Proprietario() {
 	}
-	
-	public Proprietario(int id) {
+
+	public Proprietario(String id) {
 		super();
 		this.id = id;
 	}
 
-	public Proprietario(int id, String email, String nome, String telefone, Localizacao localizacao) {
+	public Proprietario(String id, String email, String nome, String telefone, Localizacao localizacao) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -56,11 +57,11 @@ public class Proprietario implements Serializable {
 		this.localizacao = localizacao;
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -88,27 +89,27 @@ public class Proprietario implements Serializable {
 		this.telefone = telefone;
 	}
 
-//	public List<Animal> getAnimais() {
-//		return this.animais;
-//	}
-//
-//	public void setAnimais(List<Animal> animais) {
-//		this.animais = animais;
-//	}
-//
-//	public Animal addAnimais(Animal animais) {
-//		getAnimais().add(animais);
-//		animais.setProprietario(this);
-//
-//		return animais;
-//	}
-//
-//	public Animal removeAnimais(Animal animais) {
-//		getAnimais().remove(animais);
-//		animais.setProprietario(null);
-//
-//		return animais;
-//	}
+	// public List<Animal> getAnimais() {
+	// return this.animais;
+	// }
+	//
+	// public void setAnimais(List<Animal> animais) {
+	// this.animais = animais;
+	// }
+	//
+	// public Animal addAnimais(Animal animais) {
+	// getAnimais().add(animais);
+	// animais.setProprietario(this);
+	//
+	// return animais;
+	// }
+	//
+	// public Animal removeAnimais(Animal animais) {
+	// getAnimais().remove(animais);
+	// animais.setProprietario(null);
+	//
+	// return animais;
+	// }
 
 	public Localizacao getLocalizacao() {
 		return this.localizacao;

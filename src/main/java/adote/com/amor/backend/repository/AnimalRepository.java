@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import adote.com.amor.backend.domain.Animal;
 
-public interface AnimalRepository extends CrudRepository<Animal, Integer> {
+public interface AnimalRepository extends CrudRepository<Animal, String> {
 
 }

@@ -1,6 +1,8 @@
 package adote.com.amor.backend.domain;
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javax.persistence.*;
 
 /**
@@ -14,7 +16,7 @@ public class Localizacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id;
+	private String id = UUID.randomUUID().toString();
 
 	private String cep;
 
@@ -30,12 +32,12 @@ public class Localizacao implements Serializable {
 	public Localizacao() {
 	}
 
-	public Localizacao(int id) {
+	public Localizacao(String id) {
 		super();
 		this.id = id;
 	}
 
-	public Localizacao(int id, String cep, String endereco, String pontoReferencia, Float latitude, Float longitude) {
+	public Localizacao(String id, String cep, String endereco, String pontoReferencia, Float latitude, Float longitude) {
 		super();
 		this.id = id;
 		this.cep = cep;
@@ -54,11 +56,11 @@ public class Localizacao implements Serializable {
 		this.longitude = longitude;
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

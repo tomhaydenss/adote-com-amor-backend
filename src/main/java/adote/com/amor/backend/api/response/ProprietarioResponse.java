@@ -2,13 +2,13 @@ package adote.com.amor.backend.api.response;
 
 public class ProprietarioResponse {
 
-	private Integer id;
+	private String id;
 	private String nome;
 	private String email;
 	private String telefone;
 	private LocalizacaoResponse localizacao;
 
-	public ProprietarioResponse(Integer id, String nome, String email, String telefone,
+	public ProprietarioResponse(String id, String nome, String email, String telefone,
 			LocalizacaoResponse localizacao) {
 		super();
 		this.id = id;
@@ -18,7 +18,7 @@ public class ProprietarioResponse {
 		this.localizacao = localizacao;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 

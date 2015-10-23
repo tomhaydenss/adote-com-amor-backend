@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import adote.com.amor.backend.api.request.LocalizacaoRequest;
 import adote.com.amor.backend.api.request.ProprietarioRequest;
-import adote.com.amor.backend.api.response.LocalizacaoResponse;
 import adote.com.amor.backend.api.response.ProprietarioResponse;
 import adote.com.amor.backend.domain.Localizacao;
 import adote.com.amor.backend.domain.Proprietario;
@@ -39,7 +37,7 @@ public class ProprietarioController {
 	}
 
 	@RequestMapping(value = "/proprietarios/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ProprietarioResponse findOne(@PathVariable Integer id) {
+	public ProprietarioResponse findOne(@PathVariable String id) {
 
 		Proprietario result = repository.findOne(id);
 		return toProprietarioResponse(result);
@@ -56,7 +54,7 @@ public class ProprietarioController {
 	}
 
 	@RequestMapping(value = "/proprietarios/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-	public ProprietarioResponse update(@PathVariable Integer id, @RequestBody ProprietarioRequest request) {
+	public ProprietarioResponse update(@PathVariable String id, @RequestBody ProprietarioRequest request) {
 
 		Proprietario entity = new Proprietario(id, request.getNome(), request.getEmail(), request.getTelefone(),
 				new Localizacao(request.getIdLocalizacao()));
@@ -65,7 +63,7 @@ public class ProprietarioController {
 	}
 
 	@RequestMapping(value = "/proprietarios/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 
 		repository.delete(id);
 

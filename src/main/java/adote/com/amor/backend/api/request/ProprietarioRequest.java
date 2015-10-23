@@ -5,7 +5,7 @@ public class ProprietarioRequest {
 	private String nome;
 	private String email;
 	private String telefone;
-	private Integer idLocalizacao;
+	private String idLocalizacao;
 
 	public String getNome() {
 		return nome;
@@ -31,11 +31,11 @@ public class ProprietarioRequest {
 		this.telefone = telefone;
 	}
 
-	public Integer getIdLocalizacao() {
+	public String getIdLocalizacao() {
 		return idLocalizacao;
 	}
 
-	public void setIdLocalizacao(Integer idLocalizacao) {
+	public void setIdLocalizacao(String idLocalizacao) {
 		this.idLocalizacao = idLocalizacao;
 	}
 

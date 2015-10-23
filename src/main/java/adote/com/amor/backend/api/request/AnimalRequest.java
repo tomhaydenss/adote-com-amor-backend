@@ -1,7 +1,5 @@
 package adote.com.amor.backend.api.request;
 
-import java.util.Date;
-
 public class AnimalRequest {
 
 	private String nome;
@@ -9,7 +7,7 @@ public class AnimalRequest {
 	private String descricao;
 	private String dataNascimento;
 	private Integer idRaca;
-	private Integer idProprietario;
+	private String idProprietario;
 
 	public String getNome() {
 		return nome;
@@ -51,11 +49,11 @@ public class AnimalRequest {
 		this.idRaca = idRaca;
 	}
 
-	public Integer getIdProprietario() {
+	public String getIdProprietario() {
 		return idProprietario;
 	}
 
-	public void setIdProprietario(Integer idProprietario) {
+	public void setIdProprietario(String idProprietario) {
 		this.idProprietario = idProprietario;
 	}
 
